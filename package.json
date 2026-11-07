@@ -1,0 +1,10 @@
+{
+  "name": "browser-media-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static browser media capability explorer",
+  "license": "MIT",
+  "scripts": { "test": "node --test tests/browser.test.mjs" },
+  "devDependencies": { "playwright": "1.62.1" }
+}

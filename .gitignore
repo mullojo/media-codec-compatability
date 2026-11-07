@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+test-results/
+playwright-report/
+browser-media-report*.json
+browser-media-report*.png

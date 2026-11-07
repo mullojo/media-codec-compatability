@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Browser Media Lab — browser codec capabilities</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Open source · Runs on your device</div>
+    <h1>Browser Media Lab</h1>
+    <p class="sub">Check what this exact browser and device can encode, decode, and play — with local capability checks. No uploads, sign-in, or tracking.</p>
+  </header>
+
+  <section class="panel">
+    <div class="control-row">
+      <div>
+        <label for="profile">Video test profile</label>
+        <select id="profile">
+          <option value="720">720p · 2 Mbps</option>
+          <option value="1080">1080p · 4 Mbps</option>
+          <option value="2160">4K · 12 Mbps</option>
+        </select>
+      </div>
+      <div><label for="orientation">Orientation</label><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
+      <div><label for="fps">Frame rate</label><select id="fps"><option>24</option><option selected>30</option><option>60</option></select></div>
+      <button class="primary" id="scan">Run capability scan</button>
+    </div>
+    <div id="status" role="status" aria-live="polite">Ready. No files are required or uploaded.</div>
+  </section>
+
+  <p id="scan-meta" class="hint">Choose a profile, then run a scan. Results apply to this browser and device.</p>
+  <section class="cards" id="summary">
+    <div class="metric"><small>Video encoders</small><strong>—</strong></div>
+    <div class="metric"><small>Video decoders</small><strong>—</strong></div>
+    <div class="metric"><small>Audio encoders</small><strong>—</strong></div>
+    <div class="metric"><small>Audio decoders</small><strong>—</strong></div>
+  </section>
+
+  <section class="panel">
+    <h2>🎥 Video codecs</h2>
+    <p class="hint">Encoding checks use the selected resolution, frame rate and bitrate. Decoding checks use the selected resolution with typical codec settings.</p>
+    <div class="scroll"><table><thead><tr><th>Codec</th><th>Encode</th><th>Decode</th></tr></thead><tbody id="video"><tr><td colspan="3">Run a scan to see results.</td></tr></tbody></table></div>
+  </section>
+
+  <section class="panel">
+    <h2>🎵 Audio codecs</h2>
+    <p class="hint">Stereo, 48 kHz, 128 kbps encoding target.</p>
+    <div class="scroll"><table><thead><tr><th>Codec</th><th>Encode</th><th>Decode</th></tr></thead><tbody id="audio"><tr><td colspan="3">Run a scan to see results.</td></tr></tbody></table></div>
+  </section>
+
+  <section class="panel">
+    <h2>▶️ Native playback</h2>
+    <p class="hint">Checks the HTML video element and the browser's Media Capabilities API using a fixed 720 × 1280, 30 fps, 2 Mbps reference profile.</p>
+    <div class="scroll"><table><thead><tr><th>Container + codecs</th><th>HTML5</th><th>Supported</th><th>Smooth</th><th>Efficient</th></tr></thead><tbody id="playback"><tr><td colspan="5">Run a scan to see results.</td></tr></tbody></table></div>
+    <p class="hint">“Likely” and “Maybe” are browser predictions, not real playback tests. Smooth/power-efficient values may be unavailable. This reference test stays the same when the video codec test profile changes.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Recording &amp; streaming</h2><p class="hint">MIME type predictions from MediaRecorder and Media Source Extensions. No camera or microphone access is requested.</p>
+    <div class="scroll"><table><thead><tr><th>Container + codecs</th><th>Record</th><th>Media Source</th></tr></thead><tbody id="transport"><tr><td colspan="3">Run a scan to see results.</td></tr></tbody></table></div>
+  </section>
+  <section class="panel"><h2>💻 Environment</h2><pre id="environment"></pre></section>
+  <section class="panel">
+    <h2>📋 Share your results</h2>
+    <p class="hint">Copy or download a local JSON report to compare Safari, Chrome, Firefox, Mac, and iPhone. Your user-agent appears in reports and screenshots; review before sharing.</p>
+    <p class="hint">PNG export includes the entire page in a readable desktop layout, including on mobile.</p>
+    <div class="actions"><button id="copy" disabled>Copy JSON</button><button id="download" disabled>Download JSON</button><button id="screenshot" disabled>Save full-page PNG</button></div>
+  </section>
+  <section class="panel"><h2>How to read this report</h2><p class="hint">Yes means the API reports support for the tested configuration; No means it reports no support. Unknown means the API is unavailable, a query failed, or it timed out. Codec profiles, bit depth, drivers, OS, browser settings and power mode can change the result.</p><p class="hint">These are capability predictions, not actual playback or encoding tests. They do not measure speed, verify hardware acceleration, or guarantee every file will work. Media Source support does not test a streaming service or DRM.</p></section>
+  <footer>Powered by Mediabunny 1.65.2 · API predictions, not a benchmark · v0.1.0 · <a href="https://github.com/Vanilagy/mediabunny">Mediabunny</a> · <a href="README.md">Project notes</a></footer>
+</main>
+
+
+<script src="vendor/html2canvas-1.4.1.min.js" defer></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
