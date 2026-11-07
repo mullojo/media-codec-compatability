@@ -1,5 +1,7 @@
 # Browser Media Lab
 
+[**Open Browser Media Lab →**](https://mullojo.github.io/media-codec-compatability/)
+
 A free, open-source browser media capability explorer. Find out what your current browser and device report they can encode, decode, play, record, and accept through Media Source Extensions. Runs entirely on a static web server, including GitHub Pages.
 
 No build step, account, API key, analytics, uploads, or runtime CDN requests. All dependencies are included locally.
